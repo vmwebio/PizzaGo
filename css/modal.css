@@ -1,0 +1,100 @@
+.modal {
+    position: fixed;
+    z-index: 45;
+    inset: 0;
+    background-color: rgba(44, 40, 38, 0.89);
+    cursor: pointer;
+    padding: 30px 14px;
+    display: none;
+    overflow-y: auto;
+}
+
+.modal__main {
+    position: relative;
+    cursor: default;
+    padding: 16px;
+    background-color: var(--white);
+    border-radius: 32px;
+    margin: auto;
+}
+
+.modal-pizza__main {
+    max-width: 368px;
+}
+
+.modal-pizza__img {
+}
+
+.modal-pizza__title {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--dark);
+}
+
+.modal-pizza__toppings {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--dark);
+}
+
+.modal-pizza__info {
+}
+
+.modal-pizza__price {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--dark);
+}
+
+.modal-pizza__sep {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--beige);
+}
+
+.modal-pizza__size {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--beige);
+}
+
+.modal-pizza__fieldset {
+}
+
+.modal-pizza__radio {
+}
+
+.modal-pizza__label {
+}
+
+.modal__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.modal-pizza__add-cart {
+    position: absolute;
+    height: 36px;
+    left: 16px;
+    right: 16px;
+    top: 431px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px;
+    border-radius: 32px;
+    background-color: var(--orange);
+    color: var(--white);
+    outline: none;
+}
+
+.modal-pizza__add-cart:hover {
+    background-color: #FF9B25;
+}
+
+.modal-pizza__add-cart:focus {
+    background-color: #FF8A00;
+    border: 1px solid #B66200;
+}

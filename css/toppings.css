@@ -1,0 +1,130 @@
+.topping {
+    padding: 24px 0;
+}
+
+.topping__title {
+    position: fixed;
+    transform: scale(0);
+}
+
+.topping__button {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    outline: none;
+    padding: 0 5px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 32px;
+}
+
+.topping__button:focus {
+    border-color: #b66200;
+}
+
+.topping__button_active .topping__arrow{
+    transform: scaleY(-1);
+}
+
+.topping__arrow {
+    transition: transform .3s ease;
+}
+
+.topping__list {
+    display: none;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+}
+
+.topping__list_show {
+    display: flex;
+}
+
+.topping__label {
+    display: block;
+    background: var(--white);
+    border-radius: 32px;
+    padding: 8px 32px;
+    font-size: 14px;
+    color: var(--beige);
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.topping__label:hover {
+    color: var(--orange);
+}
+
+.topping__reset {
+    display: block;
+    background: red;
+    border-radius: 32px;
+    padding: 10px 32px;
+    font-size: 14px;
+    color: var(--white);
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.topping__reset:hover {
+    background: orangered;
+}
+
+.topping__checkbox{
+    position: absolute;
+    appearance: none;
+}
+
+.topping__checkbox:focus-visible + .topping__label  {
+    background: var(--white);
+    border: 1px solid var(--orange);
+    color: var(--orange);
+}
+
+.topping__checkbox:checked + .topping__label {
+    background: var(--orange);
+    color: var(--light);
+}
+
+@media (width >= 620px) {
+    .topping {
+        padding: 32px 0;
+    }
+
+    .topping__button {
+        font-size: 24px;
+    }
+
+    .topping__label {
+        font-size: 20px;
+    }
+}
+
+@media (width >= 860px) {
+    .topping__button {
+        display: none;
+    }
+
+    .topping__title {
+        position: static;
+        transform: none;
+        font-weight: 600;
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .topping__list {
+        display: flex;
+        max-height: none;
+    }
+
+    .topping__reset {
+        padding: 10px 32px;
+        font-size: 20px;
+    }
+}

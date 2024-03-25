@@ -1,0 +1,11 @@
+@import "normalize.css";
+@import "style.css";
+@import "fonts.css";
+@import "header.css";
+@import "hero.css";
+@import "toppings.css";
+@import "pizza.css";
+@import "card.css";
+@import "footer.css";
+/*@import "loader.css";*/
+@import "modal.css";

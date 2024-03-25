@@ -1,0 +1,160 @@
+.hero{
+    background-image: linear-gradient(47deg, #eb8a14 0%, #ecd55a 100%);
+    border-radius: 0 0 16px 16px;
+    margin-bottom: 43px;
+}
+
+.hero__container {
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 212px;
+}
+
+.hero__container:after {
+    content:'';
+    position: absolute;
+    z-index: 2;
+    bottom: -43px;
+    right: calc(var(--offset-container) + 7px);
+    width: calc(100vw / (320 / 261));
+    height: calc(100vw / (320 / 230));
+    max-width: 382px;
+    max-height: 337px;
+    background-image: url(../images/pizza_mobile.png);
+    background-size: contain ;
+    background-repeat: no-repeat;
+}
+
+.hero__content {
+    max-width: 300px;
+}
+
+.hero__title {
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 100%;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.hero__tagline {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--dark);
+    margin-bottom: 24px;
+    background-image: url(../images/delivery-pizza.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 32px;
+}
+
+.hero__tagline:before {
+    content: "";
+}
+
+.hero__order {
+    padding: 8px 24px;
+    background-color: var(--light);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--orange);
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 32px;
+}
+
+.hero__order:focus {
+    border-color: #b66200;
+}
+
+@media (width >= 620px) {
+    .hero {
+        border-radius: 0 0 32px 32px;
+        margin-bottom: 60px;
+    }
+
+    .hero__container {
+        padding-top: 116px;
+        padding-bottom: 90px;
+    }
+
+    .hero__content {
+        max-width: 544px;
+    }
+
+    .hero__title {
+        font-size: 64px;
+        margin-bottom: 24px;
+    }
+
+    .hero__tagline {
+        font-size: 20px;
+        margin-bottom: 50px;
+    }
+
+    .hero__order {
+        font-size: 20px;
+    }
+
+    .hero__container:after {
+        bottom: -60px;
+        right: calc(var(--offset-container) + 10px);
+    }
+}
+
+@media (width >= 860px) {
+    .hero {
+        border-radius: 0 0 32px 32px;
+        margin-bottom: 82px;
+    }
+
+    .hero__container {
+        padding-top: 126px;
+        padding-bottom: 80px;
+    }
+
+    .hero__content {
+        max-width: 544px;
+    }
+
+    .hero__container:after {
+        bottom: -60px;
+        right: calc(var(--offset-container) - 7px);
+        max-width: 566px;
+        max-height: 499px;
+        background-image: url(../images/pizza_tablet.png);
+    }
+}
+
+@media (width >= 1140px) {
+    .hero {
+        border-radius: 0 0 32px 32px;
+        margin-bottom: 87px;
+    }
+
+    .hero__container {
+        padding-top: 140px;
+        padding-bottom: 100px;
+    }
+
+    .hero__content {
+        max-width: 593px;
+    }
+
+
+    .hero__title {
+        font-size: 80px;
+    }
+
+    .hero__tagline {
+        margin-bottom: 64px;
+    }
+
+    .hero__container:after {
+        bottom: -87px;
+        right: calc(var(--offset-container) + 30px);
+        max-width: 670px;
+        max-height: 591px;
+        background-image: url(../images/pizza_desktop.png);
+    }
+}
