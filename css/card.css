@@ -92,4 +92,8 @@
         font-size: 20px;
     }
 
+    .card__button:hover {
+        background-color: var(--dark-light);
+    }
+
 }

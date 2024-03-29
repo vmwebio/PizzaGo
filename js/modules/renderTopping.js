@@ -1,5 +1,6 @@
 import {getData} from "./getData.js";
 import {renderPizzas} from "./renderPizzas.js";
+import {capitalLetter} from "./helpers.js";
 
 export const renderTopping = async () => {
     const { en: enTopping, ru: ruTopping } = await getData('https://go-go-pizza-api-7abw.onrender.com/api/toppings');
@@ -17,8 +18,8 @@ export const renderTopping = async () => {
                 value="${enName}" 
                 id="${enName}"
             >
-            <label class="topping__label" for="${enName}">
-                ${ruTopping[index].toUpperCase()[0]}${ruTopping[index].slice(1).toLowerCase()}
+            <label class="topping__label" for="${enName}">         
+                ${capitalLetter(ruTopping[index])}
             </label>
         `;
 

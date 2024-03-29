@@ -1,4 +1,7 @@
 import {getData} from "./getData.js";
+import {modalController} from "./modalController.js";
+import {renderModalPizza} from "./renderModalPizza.js";
+import {capitalLetter} from "./helpers.js";
 
 // Кнопка - "Сбросить фильтр", когда нет подходящик товаров
 const btnReset = document.createElement('button');
@@ -19,7 +22,7 @@ const createCard = (data) => {
         </picture>
         <div class="card__content">
             <h3 class="card__title">
-                ${data.name['ru'][0].toUpperCase()}${data.name['ru'].slice(1).toLowerCase()}
+                ${capitalLetter(data.name['ru'])}
             </h3>
             <p class="card__info">
                 <span class="card__price">${data.price['25cm']}&nbsp;₽</span>
@@ -58,13 +61,24 @@ export const renderPizzas = async (toppings) => {
             });
 
             pizzaList.append(...items);
+
+            // Modal Controller
+            modalController({
+                modal: '.modal-pizza',
+                btnOpen: '.card__button',
+                btnClose: '.modal__close',
+                async cbOpen(btnOpen) {
+                    const pizza = await getData(`https://go-go-pizza-api-7abw.onrender.com/api/products/${btnOpen.dataset.id}`);
+                    renderModalPizza(pizza);
+                }
+            });
         } else {
             pizzaTitle.textContent = 'Такой пиццы у нас нет :('
             pizzaTitle.after(btnReset);
         }
 };
 
-// По клику кнопки сбросить все фильтры и показать все товары
+// По клику кнопки "Сбросить фильтр" показать все товары
 btnReset.addEventListener('click', () => {
     renderPizzas();
     // document.querySelector('.topping__reset').remove();

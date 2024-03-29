@@ -4,7 +4,7 @@
 
 .pizza__title {
     font-weight: 900;
-    font-size: 28px;
+    font-size: 20px;
     color: var(--dark);
     margin-bottom: 24px;
 }
@@ -24,6 +24,27 @@
     flex-grow: 1;
 }
 
+.pizza__reset-toppings {
+    border-radius: 32px;
+    padding: 8px 24px;
+    background-color: var(--orange);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--white);
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.pizza__reset-toppings:hover {
+    background-color: #fbae22;
+}
+
+.pizza__reset-toppings:focus {
+    background-color: #fbae22;
+    border-color: #ff8a00;
+}
+
 @media (width >= 620px) {
     .pizza {
         padding: 64px 0;
@@ -36,6 +57,10 @@
     .pizza__list {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         gap: 16px;
+    }
+
+    .pizza__reset-toppings {
+        font-size: 17px;
     }
 }
 
