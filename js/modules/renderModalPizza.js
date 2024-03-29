@@ -1,5 +1,5 @@
 import {capitalLetter, createLabel, createRadionInput} from "./helpers.js";
-import {cartControl} from "./cartControl.js";
+import {cartControll} from "./cartControll.js";
 
 export const renderModalPizza = ({id, images, name, price, toppings}) => {
     const modalPizzaMain = document.querySelector('.modal-pizza__main');
@@ -94,11 +94,11 @@ export const renderModalPizza = ({id, images, name, price, toppings}) => {
     });
 
 
-    // Элемент кнопка 'В корзину'
+    // Элемент кнопка 'Добавить в корзину'
     const addCartButton = document.createElement('button');
     addCartButton.classList.add('modal-pizza__add-cart');
     addCartButton.type = 'submit';
-    addCartButton.textContent = 'В корзину';
+    addCartButton.textContent = 'Добавить в корзину';
 
     // Объединяем элементы - форма пиццы, цена и размеры в модалке заказа
     formElem.append(divElem);
@@ -139,14 +139,14 @@ export const renderModalPizza = ({id, images, name, price, toppings}) => {
         };
 
         // console.log(product);
-        cartControl.addCart(product); // Добавляем товар в localStorage
+        cartControll.addCart(product); // Добавляем товар в localStorage
 
         addCartButton.disabled = true;
         addCartButton.textContent = 'Добавлено!';
 
         timerId = setTimeout(() => {
             addCartButton.disabled = false;
-            addCartButton.textContent = 'В корзину';
+            addCartButton.textContent = 'Добавить в корзину';
         }, 3000);
     });
 
@@ -154,6 +154,6 @@ export const renderModalPizza = ({id, images, name, price, toppings}) => {
     formElem.addEventListener('change', () => {
         clearTimeout(timerId);
         addCartButton.disabled = false;
-        addCartButton.textContent = 'В корзину';
+        addCartButton.textContent = 'Добавить в корзину';
     });
 };

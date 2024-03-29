@@ -2,7 +2,7 @@
     --white: #fff;
     --beige: #c1ab91;
     --dark: #2c2826;
-    --orange: #ff8a00;
+    --orange: #fd9d2c;
     --light: #fbf3e8;
     --dark-light: #efba9369;
 }
@@ -95,16 +95,6 @@ iframe {
     position: fixed;
     transform: scale(0);
 }
-
-
-/*
-Пример контейнера
-
-Если контейнер 1180px по макету,
-то для max-width прибавляем паддинги 30px*2,
-в итоге 1240px
-Чтобы контент не прижимался к краям экрана
-*/
 
 .container {
     --offset-container:14px;

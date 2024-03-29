@@ -1,4 +1,4 @@
-import {modalCartController} from "./modalCartController.js";
+import {cartControll} from "./cartControll.js";
 import {getData} from "./getData.js";
 import {capitalLetter} from "./helpers.js";
 
@@ -7,21 +7,25 @@ const cartPriceElem = document.querySelectorAll('.modal-cart__price');
 const cartButtons = document.querySelectorAll('.modal-cart__btn');
 const cartButtonNext = document.querySelector('.modal-cart__continue');
 const cartButtonPrev = document.querySelector('.modal-cart__prev');
+const cartInputs = document.querySelector('.modal-cart__fieldset');
 const cartSubmit = document.querySelector('.modal-cart__send-order');
 const cartBlockElem = document.querySelector('.modal-cart__block');
 const cartDeliveryElem = document.querySelector('.modal-cart__delivery');
 const cartForm = document.querySelector('.modal-cart__form');
+const deliveryInfo = document.querySelector('.modal-cart__delivery-info');
+const headerCartButton = document.querySelector('.header__cart');
+const heroOrderButton = document.querySelector('.hero__order');
 
 const renderCartList = async () => {
     let totalPrice = 0;
 
-    if (modalCartController.cartData.length) {
+    if (cartControll.cartData.length) {
         cartListElem.textContent = '';
         cartButtonNext.disabled = false;
 
         // Получаем все товары в корзине
         const cardsData = await  Promise.all(
-            modalCartController.cartData.map(
+            cartControll.cartData.map(
                 async (item) =>
                     await getData(
                         `https://go-go-pizza-api-7abw.onrender.com/api/products/${item.id}`,
@@ -31,7 +35,7 @@ const renderCartList = async () => {
 
         // Формируем карточку товара в корзине
         const cardsCart = cardsData.map ((data, index) => {
-            const  item = modalCartController.cartData[index];
+            const  item = cartControll.cartData[index];
 
             const cardCart = document.createElement('li');
             cardCart.classList.add('modal-cart__item');
@@ -81,7 +85,7 @@ const delCartItem = (e) => {
 
         if (deleteButton) {
             const cartId = deleteButton.dataset.id;
-            modalCartController.removeCart(cartId);
+            cartControll.removeCart(cartId);
             renderCartList();
         }
     }
@@ -102,7 +106,7 @@ const submitOrder = ( async (e) => {
     e.preventDefault();
     const formData = new FormData(cartForm);
     const data = Object.fromEntries(formData);
-    data.pizzas = modalCartController.cartData;
+    data.pizzas = cartControll.cartData;
 
     try {
         const  response = await fetch('https://go-go-pizza-api-7abw.onrender.com/api/orders/', {
@@ -119,13 +123,15 @@ const submitOrder = ( async (e) => {
 
         const order = await response.json();
 
-        modalCartController.clearCart();
+        cartControll.clearCart();
 
-        cartForm.innerHTML = `
-                <h3>Заказ оформлен, номер заказа ${order.orderId}</h3>
+        deliveryInfo.innerHTML = `
+                <h3>Заказ оформлен, номер заказа ${order.orderId}</h3>                
             `;
 
-        [cartButtonNext, cartButtonPrev, cartSubmit].forEach((btn) => btn.disabled = true);
+        // Блокировка формы заказа после отправки
+        [cartButtonNext, cartButtonPrev, cartInputs, cartSubmit].forEach((btn) => btn.disabled = true);
+
 
     } catch (err) {
         console.log(`Ошибка при отправке заказа: ${err}`);
@@ -134,6 +140,27 @@ const submitOrder = ( async (e) => {
 
 
 export const modalCartController = () => {
+
+    // События модального окна корзины для повторного заказа
+    const openModalHandler = () => {
+        // Сброс текущего шага обработки заказа и возврат к начальному шагу
+        cartBlockElem.style.display = 'block';
+        cartDeliveryElem.style.display = 'none';
+
+        // Очистка прежнего сообщения о номере заказа
+        deliveryInfo.innerHTML = '';
+
+        // Очистка формы прежнего заказа
+        cartForm.reset();
+
+        // Разблокировка формы
+        [cartButtonPrev, cartInputs, cartSubmit].forEach((btn) => btn.disabled = false);
+
+    };
+
+    // Обработчики события на открытия модального окна корзины по классу header__cart и hero__order
+    headerCartButton.addEventListener('click', openModalHandler);
+    heroOrderButton.addEventListener('click', openModalHandler);
 
     renderCartList();
 
@@ -146,4 +173,5 @@ export const modalCartController = () => {
 
     // Отправить заказ
     cartForm.addEventListener('submit', submitOrder);
+
 }

@@ -1,4 +1,4 @@
-export const modalCartController = {
+export const cartControll = {
     // Данные корзины в localStorage с именем cart
     cartData: JSON.parse(localStorage.getItem('cart') || '[]'),
     // Добавляем товар в localStorage
