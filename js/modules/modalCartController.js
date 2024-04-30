@@ -28,7 +28,7 @@ const renderCartList = async () => {
             cartControll.cartData.map(
                 async (item) =>
                     await getData(
-                        `https://go-go-pizza-api-7abw.onrender.com/api/products/${item.id}`,
+                        `https://festive-inconclusive-jupiter.glitch.me/api/products/${item.id}`,
                     ),
             ),
         );
@@ -109,7 +109,7 @@ const submitOrder = ( async (e) => {
     data.pizzas = cartControll.cartData;
 
     try {
-        const  response = await fetch('https://go-go-pizza-api-7abw.onrender.com/api/orders/', {
+        const  response = await fetch('https://festive-inconclusive-jupiter.glitch.me/api/orders/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
