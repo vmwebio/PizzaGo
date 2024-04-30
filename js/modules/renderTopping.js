@@ -3,7 +3,7 @@ import {renderPizzas} from "./renderPizzas.js";
 import {capitalLetter} from "./helpers.js";
 
 export const renderTopping = async () => {
-    const { en: enTopping, ru: ruTopping } = await getData('https://go-go-pizza-api-7abw.onrender.com/api/toppings');
+    const { en: enTopping, ru: ruTopping } = await getData('https://festive-inconclusive-jupiter.glitch.me/api/toppings');
     const toppingList = document.querySelector('.topping__list');
     toppingList.textContent = '';
 
