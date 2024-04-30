@@ -39,7 +39,7 @@ const createCard = (data) => {
 // Запрос и рендер списка товаров и топпинг фильтра
 export const renderPizzas = async (toppings) => {
     const pizzas = await getData(
-        `https://go-go-pizza-api-7abw.onrender.com/api/products${
+        `https://festive-inconclusive-jupiter.glitch.me/api/products${
             toppings ? `?toppings=${toppings}` : ''
         }`,
     );
@@ -68,7 +68,7 @@ export const renderPizzas = async (toppings) => {
                 btnOpen: '.card__button',
                 btnClose: '.modal__close',
                 async cbOpen(btnOpen) {
-                    const pizza = await getData(`https://go-go-pizza-api-7abw.onrender.com/api/products/${btnOpen.dataset.id}`);
+                    const pizza = await getData(`https://festive-inconclusive-jupiter.glitch.me/api/products/${btnOpen.dataset.id}`);
                     renderModalPizza(pizza);
                 }
             });
